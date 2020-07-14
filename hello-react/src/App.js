@@ -3,7 +3,8 @@ import './App.css';
 import MyComponent from './MyComponent';
 
 const App = () => {
-  return <MyComponent />
+  const name = "DoHyun";
+  return <MyComponent name={name}/>
 }
 
 export default App;
