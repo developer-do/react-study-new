@@ -2,30 +2,44 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // 비구조화 할당 방법 2
-const MyComponent = ({ name, favoriteNumber, children }) => {
+class MyComponent extends React.Component {
   // 비구조화 할당 방법 1
   // const { name, children } = props;
-  return (
-    <div>
-      안녕하세요, 제 이름은 {name}입니다.
-      <br />
-      children 값은 {children}
-      입니다.
-      <br />
-      제가 좋아하는 숫자는 {favoriteNumber}입니다.
-    </div>
-  );
+
+  // class 내부에서 defaultProps와 propTypes를 지정하는 방법
+  static defaultProps = {
+    name: '기본 이름',
+  };
+  static propTypes = {
+    name: PropTypes.string,
+    favoriteNumber: PropTypes.number.isRequired,
+  }
+
+  render () {
+
+    const { name, favoriteNumber, children } = this.props; // 비구조화 할당
+    return (
+      <div>
+        안녕하세요, 제 이름은 {name}입니다.
+        <br />
+        children 값은 {children}
+        입니다.
+        <br />
+        제가 좋아하는 숫자는 {favoriteNumber}입니다.
+      </div>
+    );
+  }
 };
 
 // props값이 넘어 오지 않을 때 기본이름 지정
-MyComponent.defaultProps = {
-  name: 'default name',
-};
+// MyComponent.defaultProps = {
+//   name: 'default name',
+// };
 
-MyComponent.propTypes = {
-  name: PropTypes.string,
-  favoriteNumber: PropTypes.number.isRequired
-};
+// MyComponent.propTypes = {
+//   name: PropTypes.string,
+//   favoriteNumber: PropTypes.number.isRequired
+// };
 
 /**
  * 더 많은 PropTypes 종류
