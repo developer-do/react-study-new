@@ -8,7 +8,7 @@ import ValidationSample from './ValidationSample';
 import Refsample from './Refsample';
 
 const App = () => {
-  return <Refsample />
+  return <ValidationSample />
 }
 
 export default App;

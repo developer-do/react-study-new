@@ -8,6 +8,8 @@ class ValidationSample extends Component {
     validated: false
   }
 
+  
+
   handleChange = (e) => {
     this.setState({
       password: e.target.value
@@ -19,6 +21,28 @@ class ValidationSample extends Component {
       clicked: true,
       validated: this.state.password === '0000'
     });
+    this.input.focus();
+    
+    setTimeout(() => {
+      if(this.state.validated) {
+        alert("정답입니다.");
+      } else {
+        alert("틀렸습니다.");
+        this.inputInit();
+      }
+    }, 0);
+  }
+
+  handelKeyPress = (e) => {
+    if(e.key === "Enter") {
+      this.handleButtonClick();
+    }
+  }
+
+  inputInit = () => {
+    this.setState({
+      password: ''
+    });
   }
 
   render() {
@@ -28,7 +52,9 @@ class ValidationSample extends Component {
           type="password"
           value={this.state.password}
           onChange={this.handleChange}
+          ref={(ref) => this.input = ref}
           className={this.state.clicked ? (this.state.validated ? 'success' : 'failure') : ''}
+          onKeyPress={this.handelKeyPress}
         />
         <button onClick={this.handleButtonClick}>검증하기</button>
       </div>
