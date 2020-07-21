@@ -11,7 +11,29 @@ const IterationSample = (props) => {
   const [nextId, setNextId] = useState(names.length + 1); // 새로운 항목을 추가할 대 사용할 id
   const namesList = names.map(names => <li key={names.id}>{names.text}</li>);
 
-  return <ul>{namesList}</ul>;
+  const onChange = e => setInputText(e.target.value);
+  const onKeyPress = e => {
+    if(e.key === "Enter") {
+      onClick();
+    }
+  }
+  const onClick = () => {
+    const nextNames = names.concat({
+      id: nextId,
+      text: inputText
+    });
+    setNextId(nextId + 1);
+    setNames(nextNames);
+    setInputText('');
+  }
+
+  return (
+    <>
+      <input value={inputText} onChange={onChange} onKeyPress={onKeyPress}/>
+      <button onClick={onClick}>추가</button>
+      <ul>{namesList}</ul>
+    </>
+  )
 };
 
 export default IterationSample;
