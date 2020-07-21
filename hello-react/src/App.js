@@ -26,7 +26,7 @@ import IterationSample from './IterationSample';
 // }
 
 const App = () => {
-  return <IterationSample />
+  return <IterationSample name="김도현"/>
 }
 
 export default App;
