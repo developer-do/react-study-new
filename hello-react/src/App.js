@@ -8,6 +8,7 @@ import ValidationSample from './ValidationSample';
 import Refsample from './Refsample';
 import ScrollBox from './ScrollBox';
 import IterationSample from './IterationSample';
+import LifeCycleSample from './LifeCycleSample';
 
 // class App extends Component {
 //   render () {
@@ -26,7 +27,7 @@ import IterationSample from './IterationSample';
 // }
 
 const App = () => {
-  return <IterationSample name="김도현"/>
+  return <LifeCycleSample />
 }
 
 export default App;
