@@ -15,11 +15,15 @@ const Info = () => {
    * 함수형 컴포넌트에서는 useEffect의 두번째 파라미터 배열에 업데이트되면 호출하고싶은 특정 값을 배열에 추가
    */
   useEffect(() => {
-    console.log('렌더링이 완료되었습니다.');
+    console.log('effect');
     console.log({
       name,
       nickname
     });
+    return () => {
+      console.log('cleanup');
+      console.log(name);
+    }
   }, [name]);
 
 
