@@ -10,7 +10,7 @@ const Info = () => {
       name,
       nickname
     });
-  });
+  }, []);
 
   const onChangeName = e => {
     setName(e.target.value);
