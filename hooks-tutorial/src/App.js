@@ -7,7 +7,7 @@ const App = () => {
   const [visible, setVisible] = useState(false);
   return (
     <div>
-      <Counter />
+      {/* <Counter />
       <button
         onClick={() => {
           setVisible(!visible);
@@ -16,7 +16,7 @@ const App = () => {
         {visible ? '숨기기' : '보이기'}
       </button>
       <hr />
-      {visible && <Info />}
+      {visible && <Info />} */}
       <Counter2 />
     </div>
   );
