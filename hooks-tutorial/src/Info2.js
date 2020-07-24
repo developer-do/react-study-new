@@ -1,9 +1,51 @@
-import React, {useReducer} from 'react';
+// import React, {useReducer} from 'react';
 
-const init = {
+// const init = {
+//   name: '',
+//   nickname: ''
+// }
+
+// function reducer(state, action) {
+//   return {
+//     ...state,
+//     [action.name]: action.value
+//   }
+// }
+
+// const Info2 = () => {
+//   const [state, dispatch] = useReducer(reducer, init);
+//   const {name, nickname} = state;
+//   console.log(state);
+//   const onChange = e => {
+//     console.log(e.target);
+//     dispatch(e.target);
+//   }
+//   return (
+//     <div>
+//       <div>
+//         <input name="name" value={name} onChange={onChange} />
+//         <input name="nickname" value={nickname} onChange={onChange} />
+//       </div>
+//       <div>
+//         <div>
+//           <b>이름:</b> {name}
+//         </div>
+//         <div>
+//           <b>닉네임:</b> {nickname}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Info2;
+
+import React, { useReducer } from 'react';
+
+const initState = {
   name: '',
   nickname: ''
-}
+};
 
 function reducer(state, action) {
   return {
@@ -12,12 +54,11 @@ function reducer(state, action) {
   }
 }
 
+
 const Info2 = () => {
-  const [state, dispatch] = useReducer(reducer, init);
-  const {name, nickname} = state;
-  console.log(state);
+  const [state, dispatch] = useReducer(reducer, initState);
+  const { name, nickname } = state;
   const onChange = e => {
-    console.log(e.target);
     dispatch(e.target);
   }
   return (
@@ -28,10 +69,10 @@ const Info2 = () => {
       </div>
       <div>
         <div>
-          <b>이름:</b> {name}
+          <b>이름 :</b> {name}
         </div>
         <div>
-          <b>닉네임:</b> {nickname}
+          <b>닉네임 :</b> {nickname}
         </div>
       </div>
     </div>
