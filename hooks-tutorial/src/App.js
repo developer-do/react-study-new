@@ -4,6 +4,7 @@ import Info from './Info';
 import Counter2 from './Counter2';
 import Info2 from './Info2';
 import Average from './Average';
+import UseRefExample from './UseRefExample';
 
 const App = () => {
   const [visible, setVisible] = useState(false);
@@ -20,8 +21,9 @@ const App = () => {
       <hr />
       {visible && <Info />} */}
       {/* <Counter2 /> */}
-      {/* <Info2 /> */}
-      <Average />
+      <Info2 />
+      {/* <Average /> */}
+      {/* <UseRefExample /> */}
     </div>
   );
 };

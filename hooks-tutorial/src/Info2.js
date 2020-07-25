@@ -40,27 +40,19 @@
 
 // export default Info2;
 
-import React, { useReducer } from 'react';
+import React from 'react';
+import useInputs from './useInputs';
 
 const initState = {
   name: '',
   nickname: ''
 };
 
-function reducer(state, action) {
-  return {
-    ...state,
-    [action.name]: action.value
-  }
-}
 
 
 const Info2 = () => {
-  const [state, dispatch] = useReducer(reducer, initState);
+  const [ state, onChange ] = useInputs(initState);
   const { name, nickname } = state;
-  const onChange = e => {
-    dispatch(e.target);
-  }
   return (
     <div>
       <div>
