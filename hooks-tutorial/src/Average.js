@@ -1,4 +1,4 @@
-import React, {useState, useMemo, useCallback} from 'react';
+import React, {useState, useMemo, useCallback, useRef } from 'react';
 
 const getAverage = numbers => {
   console.log("평균값 계산 중");
@@ -12,6 +12,7 @@ const getAverage = numbers => {
 const Average = () => {
   const [list, setList] = useState([]);
   const [number, setNumber] = useState('');
+  const inputEl = useRef(null);
 
   const onChange = useCallback( e => {
     setNumber(e.target.value);
@@ -21,6 +22,7 @@ const Average = () => {
     const nextList = list.concat(parseInt(number));
     setList(nextList);
     setNumber('');
+    inputEl.current.focus();
   }, [number, list]);
   
   // 꼭 두번째 인자를 적어줘야 된다. 안 그러면 1전뺴 파라미터로 전달한 함수를 항상 실행하기 때문이다.
@@ -28,7 +30,7 @@ const Average = () => {
 
   return (
     <div>
-      <input value={number} onChange={onChange}/>
+      <input value={number} onChange={onChange} ref={inputEl} />
       <button onClick={onInsert}>등록</button>
       <ul>
         {list.map((value, index) => (
