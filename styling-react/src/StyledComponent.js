@@ -50,7 +50,7 @@ tagged`hello ${{foo: 'bar'}} ${() => 'world'}`;
 
 const StyledComponent = () => {
   return (
-    <Box color="black">
+    <Box color="skyblue">
       <Button>안녕하세요</Button>
       <Button inverted={true}>테두리만</Button>
     </Box>
