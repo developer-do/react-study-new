@@ -69,3 +69,4 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 
 git flow 1.0.0 release
+git flow 1.0.1 hotfix
