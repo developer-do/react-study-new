@@ -41,6 +41,12 @@ const Button = styled.button`
 `;
 
 
+function tagged(...args) {
+  console.log(args);
+}
+console.log(`hello ${{foo: 'bar'}} ${() => 'world'}`);
+tagged`hello ${{foo: 'bar'}} ${() => 'world'}`;
+
 
 const StyledComponent = () => {
   return (
