@@ -4,8 +4,21 @@ import TodoTemplate from "./components/TodoTemplate";
 import TodoInsert from "./components/TodoInsert";
 import TodoList from "./components/TodoList";
 
+function createBulkTodos() {
+  const array = [];
+  for(let i = 1; i <= 2500; i++) {
+    array.push({
+      id: i,
+      text: `할 일 ${i}`,
+      checked: false
+    });
+  }
+  return array;
+}
+
+
 function App() {
-  const [todos, setTodos] = useState([
+  /* const [todos, setTodos] = useState([
     {
       id: 1,
       text: "리액트 기초 알아보기",
@@ -21,7 +34,8 @@ function App() {
       text: "일정 관리 앱 만들어 보기",
       checked: false,
     },
-  ]);
+  ]); */
+  const [todos, setTodos] = useState(createBulkTodos);
 
   // 고유값으로 사용될 id
   // ref를 사용하여 변수 담기
