@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Link } from "react-router-dom";
+import { Route, Link, Switch } from "react-router-dom";
 import Home from "./component/Home";
 import About from "./component/About";
 import Profile from "./component/Profile";
@@ -23,11 +23,22 @@ function App() {
           <Link to="/history">history 예제</Link>
         </li>
       </ul>
-      <Route path="/" component={Home} exact={true} />
-      <Route path={["/about", "/info"]} component={About} />
-      <Route path="/profile/:username" component={Profile} />
-      <Route path="/profiles" component={Profiles} />
-      <Route path="/history" component={HistorySample} />
+      <hr />
+      <Switch>
+        <Route path="/" component={Home} exact={true} />
+        <Route path={["/about", "/info"]} component={About} />
+        <Route path="/profile/:username" component={Profile} />
+        <Route path="/profiles" component={Profiles} />
+        <Route path="/history" component={HistorySample} />
+        <Route 
+          render={({location}) => (
+            <div>
+              <h2>이 페이지는 존재하지 않습니다:)</h2>
+              <p>{location.pathname}</p>
+            </div>
+          )}
+        />
+      </Switch>
     </div>
   );
 }
