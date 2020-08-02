@@ -1,4 +1,10 @@
 import React from "react";
+import { withRouter } from 'react-router-dom';
+import WithRouterSample from './WithRouterSample';
+/* 
+withRouter은 현재 profile기준으로 match가 전달된다.
+withRouter을 다른곳에 쓰고 적용시킨다면 match가 전달되지 않을 수 있으니 유의해야 한다.
+*/
 
 const data = {
   velopert: {
@@ -24,6 +30,7 @@ const Profile = ({ match }) => {
         {username}({profile.name})
       </h3>
       <p>{profile.description}</p>
+      <WithRouterSample />
     </div>
   );
 };
