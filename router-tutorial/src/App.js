@@ -12,7 +12,7 @@ function App() {
           <Link to="/">홈</Link>
         </li>
         <li>
-          <Link to="/About">소개</Link>
+          <Link to="/about">소개</Link>
         </li>
         <li>
           <Link to="/profile/velopert">velopert의 프로필</Link>

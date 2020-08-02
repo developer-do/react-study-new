@@ -12,6 +12,7 @@ const data = {
 };
 
 const Profile = ({ match }) => {
+  console.log(match);
   const { username } = match.params;
   const profile = data[username];
   if(!profile) {
@@ -20,7 +21,7 @@ const Profile = ({ match }) => {
   return (
     <div>
       <h3>
-        {username}({Profile.name})
+        {username}({profile.name})
       </h3>
       <p>{profile.description}</p>
     </div>
