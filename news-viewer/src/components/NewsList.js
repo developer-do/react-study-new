@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import NewsItem from './NewsItem';
+import axios from 'axios';
 
 const NewsListBlock = styled.div`
   box-sizing: border-box;
@@ -22,18 +23,41 @@ const sampleArticle = {
   urlToImage: 'https://via.placeholder.com/160',
 };
 
-console.log(sampleArticle);
-
 const NewsList = () => {
+  const [articles, setArticles] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    // async르 사용하는 함수 따로 선언
+    const fetchData = async() => {
+      setLoading(true);
+      try {
+        const response = await axios.get("https://newsapi.org/v2/top-headlines?country=kr&apiKey=fa1fc3f8d46a48d387bcbca519fdc2f6");
+        console.log(response);
+        setArticles(response.data.articles);
+      } catch (e) {
+        console.log(e);
+      }
+      setLoading(false);
+    };
+    fetchData();
+  }, []);
+
+  // 대기 중일 때
+  if(loading) {
+    return <NewsListBlock>대기 중...</NewsListBlock>
+  }
+  // 아직 articles 값이 설정되지 않았을 때
+  if(!articles) {
+    return null;
+  }
+
   return (
     <NewsListBlock>
-      <NewsItem article={sampleArticle} />
-      <NewsItem article={sampleArticle} />
-      <NewsItem article={sampleArticle} />
-      <NewsItem article={sampleArticle} />
-      <NewsItem article={sampleArticle} />
-      <NewsItem article={sampleArticle} />
-      <NewsItem article={sampleArticle} />
+      {articles.map(article => (
+        <NewsItem key={article.url} article={article} />  
+      ))}
+      
     </NewsListBlock>
   );
 };
