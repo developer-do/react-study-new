@@ -57,12 +57,10 @@ const NewsList = ({ category }) => {
   }
 
   if(error) {
-    return <NewsListBlock>에러 발생!</NewsListBlock>;
+    return <NewsListBlock>에러 발생!</NewsListBlock>
   }
 
-  // response 값이 유효할 때
   const { articles } = response.data;
-
   return (
     <NewsListBlock>
       {articles.map((article) => (
