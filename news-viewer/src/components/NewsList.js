@@ -16,23 +16,19 @@ const NewsListBlock = styled.div`
   }
 `;
 
-const sampleArticle = {
-  title: '제목',
-  description: '내용',
-  url: 'https://google.com',
-  urlToImage: 'https://via.placeholder.com/160',
-};
-
-const NewsList = () => {
+const NewsList = ({ category }) => {
   const [articles, setArticles] = useState(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     // async르 사용하는 함수 따로 선언
-    const fetchData = async() => {
+    const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await axios.get("https://newsapi.org/v2/top-headlines?country=kr&apiKey=fa1fc3f8d46a48d387bcbca519fdc2f6");
+        const query = category === 'all' ? '' : `&category=${category}`;
+        const response = await axios.get(
+          `https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=fa1fc3f8d46a48d387bcbca519fdc2f6`,
+        );
         console.log(response);
         setArticles(response.data.articles);
       } catch (e) {
@@ -41,23 +37,22 @@ const NewsList = () => {
       setLoading(false);
     };
     fetchData();
-  }, []);
+  }, [category]);
 
   // 대기 중일 때
-  if(loading) {
-    return <NewsListBlock>대기 중...</NewsListBlock>
+  if (loading) {
+    return <NewsListBlock>대기 중...</NewsListBlock>;
   }
   // 아직 articles 값이 설정되지 않았을 때
-  if(!articles) {
+  if (!articles) {
     return null;
   }
 
   return (
     <NewsListBlock>
-      {articles.map(article => (
-        <NewsItem key={article.url} article={article} />  
+      {articles.map((article) => (
+        <NewsItem key={article.url} article={article} />
       ))}
-      
     </NewsListBlock>
   );
 };
