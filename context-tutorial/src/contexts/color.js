@@ -1,7 +1,7 @@
 import React, { createContext, useState } from "react";
 
 const ColorContext = createContext({
-  state: { color: "black", subcoloe: "red" },
+  state: { color: "black", subcolor: "red" },
   actions: {
     setColor: () => {},
     setSubColor: () => {},
