@@ -1,5 +1,7 @@
 console.log("hello Parcel!!!");
 
+import { createStore } from "redux";
+
 const divToggle = document.querySelector(".toggle");
 const counter = document.querySelector("h1");
 const btnIncrease = document.querySelector("#increase");
@@ -43,3 +45,5 @@ function reducer(state = initialState, action) {
       return false;
   }
 }
+
+const store = createStore(reducer);
