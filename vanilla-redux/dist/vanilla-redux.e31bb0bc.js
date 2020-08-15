@@ -950,7 +950,7 @@ divToggle.onclick = function () {
 };
 
 btnIncrease.onclick = function () {
-  store.dispatch(increase(1));
+  store.dispatch(increase(5));
 };
 
 btnDecrease.onclick = function () {
