@@ -1,5 +1,3 @@
-console.log("hello Parcel!!!");
-
 import { createStore } from "redux";
 
 const divToggle = document.querySelector(".toggle");
@@ -42,8 +40,33 @@ function reducer(state = initialState, action) {
         counter: state.counter - 1,
       };
     default:
-      return false;
+      return state;
   }
 }
 
 const store = createStore(reducer);
+
+const render = () => {
+  const state = store.getState(); // 현재 상태를 불러옵니다.=
+  // 토글 처리
+  if (state.toggle) {
+    divToggle.classList.add("active");
+  } else {
+    divToggle.classList.remove("active");
+  }
+  // 카운터 처리
+  counter.innerText = state.counter;
+};
+
+render();
+store.subscribe(render);
+
+divToggle.onclick = () => {
+  store.dispatch(toggleSwitch());
+};
+btnIncrease.onclick = () => {
+  store.dispatch(increase(1));
+};
+btnDecrease.onclick = () => {
+  store.dispatch(decrease());
+};
